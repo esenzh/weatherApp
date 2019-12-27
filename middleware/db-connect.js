@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.connect(
-    'mongodb://localhost/myforecast',
+    'mongodb+srv://dekinng:123@cluster0-nck4q.mongodb.net/test?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,

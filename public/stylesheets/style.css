@@ -1,0 +1,30 @@
+body{
+    background-color: #bbded6;
+}
+.condition {
+    margin: 0;
+    font-size: 12px;
+    color: gray;
+}
+
+.feelsLikeP {
+    font-size: 12px;
+    color: gray;
+}
+
+.showCard {
+    display: none;
+}
+
+.btn-circle {
+    width: 40px;
+    height: 40px;
+    padding: 6px 0px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+    position: absolute;
+    right: 2em;
+    font-size: 20px;
+}

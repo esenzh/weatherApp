@@ -1,0 +1,30 @@
+<div class="container">
+    <br>
+    <br>
+    <h4 style="font-family: monospace">My saved locations</h4>
+    <br>
+    {{#each forecasts}}
+        <div class="card m-3 p-4 foundLocation">
+            <div class="card-title">
+                <p id="cityName" style="font-size: 20px">{{this.name}}</p>
+                <span id="currentTime" style="font-size: 15px; color:gray;"> {{this.date_time}}</span>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <h2>
+                        {{this.temp}} °C
+                        <img class="iconCurrentDate"
+                             src='{{this.icon}}'
+                             style="width: 40px; height: 40px" alt="">
+                    </h2>
+                </div>
+                <div class="col-sm">
+                    <p class="condition"> {{this.condition}}</p>
+                    <p class="feelsLikeP">Feels like <span class="feelsLike">{{this.feels_like}} °C</span>
+                    </p>
+                </div>
+                <div class="col-sm "></div>
+            </div>
+        </div>
+    {{/each}}
+</div>

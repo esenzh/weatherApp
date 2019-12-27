@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="card m-3 p-4">
+        <form name="searchForm" action="/search/location" method="POST">
+            <div class="form-group">
+                <label>Please enter the city name:</label>
+                <input class="border form-control" type="text" name="location" placeholder="ex: Moscow" required/>
+            </div>
+            <div>
+                <input class="btn btn-success" type="submit" value="Search"/>
+            </div>
+        </form>
+    </div>
+    <br>
+    {{#if response}}
+        <h4 style="display: block;
+    text-align: center; font-family: monospace"> Search Result: </h4>
+        <form action="/search/location/save" method="POST">
+            <div class="card m-3 p-4 foundLocation">
+                <button type="submit" class="btn btn-success btn-circle">+</button>
+                <div class="card-title">
+                    <p id="cityName" style="font-size: 20px">{{response.info.tzinfo.name}}</p>
+                    <span id="currentTime" style="font-size: 15px; color:gray;"> {{time}}</span>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <h2>
+                            {{response.fact.temp}} °C
+                            <img class="iconCurrentDate"
+                                 src='{{iconAPI}}'
+                                 style="width: 40px; height: 40px" alt="">
+                        </h2>
+                    </div>
+                    <div class="col-sm">
+                        <p class="condition"> {{response.fact.condition}}</p>
+                        <p class="feelsLikeP">Feels like <span class="feelsLike">{{response.fact.feels_like}} °C</span>
+                        </p>
+                    </div>
+                    <div class="col-sm "></div>
+                </div>
+            </div>
+            <br>
+            <h4 style="display: block; text-align: center; font-family: monospace">Forecast for next 7 days</h4>
+            <div class="card m-3 p-4">
+                {{#each response.forecasts}}
+                    <div class="card-title">
+                        <p id="date" style="font-size: 20px">{{this.date}}</p>
+                        <h4>{{this.parts.day.temp_max}} °C <img class="iconCurrentDate"
+                                                                src='https://yastatic.net/weather/i/icons/blueye/color/svg/{{this.parts.day.icon}}.svg'
+                                                                style="width: 40px; height: 40px" alt=""></h4>
+                        <p style="color: gray">{{this.parts.day.temp_min}} °C</p>
+                        <p class="condition"> {{this.parts.day.condition}}</p>
+                    </div>
+                    <hr>
+                {{/each}}
+            </div>
+            <input style="visibility: hidden" type="text" name="name" value="{{response.info.tzinfo.name}}">
+            <input style="visibility: hidden" type="text" name="date_time" value="{{time}}">
+            <input style="visibility: hidden" type="text" name="temp" value="{{response.fact.temp}}">
+            <input style="visibility: hidden" type="text" name="icon" value="{{iconAPI}}">
+            <input style="visibility: hidden" type="text" name="condition" value="{{response.fact.condition}}">
+            <input style="visibility: hidden" type="text" name="feels_like" value="{{response.fact.feels_like}}">
+        </form>
+    {{/if}}
+</div>

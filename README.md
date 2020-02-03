@@ -1,7 +1,9 @@
 # weatherApp
 Weather Application using yandex api.
 
-![GitHub Logo](/images/screen1.png)
+![Search Page](/public/images/screen1.png)
+
+![Saved Location Page](/public/images/screen2.png)
 
 To start application run following commands:
 `npm install`
